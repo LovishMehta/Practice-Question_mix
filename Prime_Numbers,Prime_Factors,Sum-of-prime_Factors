@@ -1,0 +1,62 @@
+Sieve of Eratosthenes
+link: https://www.geeksforgeeks.org/sieve-of-eratosthenes/
+
+#include <stdio.h>
+#include<string.h>
+
+
+
+int* prime(int n)
+{
+  int arr[n];
+
+ for(int i=0;i<n;i++)
+ {
+     arr[i] =1;
+ }
+
+  for(int i=2;i*i<n;i++)
+  {
+      if(arr[i]==1)
+       {
+           for(int j=i*i;j<n;j+=i)
+              arr[j] = 0;
+       }
+  }
+  int *primeNum;
+  primeNum = (int*)malloc(n*sizeof(int));
+  int p=0;
+  int sum=0;
+
+  for(int k=2;k<n;k++)
+  {
+   if(arr[k]==1)
+   {
+       if(n%k==0)
+       {
+  printf("%d ",k);
+   sum += k;
+
+   }
+  }
+  }
+
+
+
+  printf("\n%d",sum);
+
+
+  return primeNum;
+}
+
+int main() {
+    int testcases,n;
+    int *primeNum;
+
+
+        scanf("%d",&n);
+        primeNum =prime(n);
+
+
+	return 0;
+}

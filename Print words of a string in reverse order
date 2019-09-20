@@ -1,0 +1,35 @@
+
+// Reversing the line
+// my name is lovish  =>  lovish is name my
+// In this we are just putting '/0' null character at the place of ' ' character and then we print the 
+// string , we know that defination string is print upto where '/0' character not detected
+
+//Refer link : https://www.geeksforgeeks.org/print-words-string-reverse-order/
+
+#include <stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main()
+{
+char *p;
+p = (char*)malloc(sizeof(char)*100);
+int i;
+printf("Enter the string you want to store\n");
+scanf("%[^\n]%*c",p);
+
+p = (char*)realloc(p,sizeof(char)*strlen(p));
+
+int n = strlen(p);
+for(i=n-1;i>0;i--)
+{
+	if(*(p+i)==' ')
+	{
+		*(p+i)='\0';
+		printf("%s ",p+i+1);
+	}
+	}
+printf("%s",p);	
+return 0;
+}
+
